@@ -1,0 +1,34 @@
+<main>
+  <section class="app">
+    <h1>Cosas Por hacer</h1>
+    <div class="add-container">
+      <input class="input" type="text" required [(ngModel)]="toDo" />
+      <!-- <button class="button" (click)="addToDos(toDo)">Agregar</button> -->
+      <input
+        class="button"
+        type="button"
+        [disabled]="!toDo || null"
+        text="Add"
+        value="Add"
+        (click)="addToDos(toDo)"
+      />
+    </div>
+
+    <p class="noTodo" *ngIf="arrToDos.length === 0">
+      No tenemos nada que hacer 😪🙈
+    </p>
+
+    <div *ngFor="let do of arrToDos; index as i">
+      <div class="li">
+        <p [class]="classLi" id="id{{ i }}">
+          {{ do }}
+        </p>
+        <div class="buttons-container">
+          <button class="button" (click)="deleteToDo(i)">Eliminar</button>
+
+          <button class="button" (click)="finishToDo(i)">Terminado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
